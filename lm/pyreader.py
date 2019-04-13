@@ -7,6 +7,7 @@ import numpy as np
 import sys
 import itertools
 import math
+from tqdm import tqdm
 
 import astwalker
 from normalisation import get_source_tree
@@ -106,7 +107,7 @@ def get_data(path, listfile, seq_length, word_to_id):
     # in particular takes up no columns
     non_vars = [word_to_id[indent_token], word_to_id[dedent_token]]
 
-    for j in range(len(all_data)):
+    for j in tqdm(range(len(all_data))):
         filedata = list(all_data[j])
         file_positions = def_positions[j]
         identifier_positions = identifier_usage[j]

@@ -13,7 +13,8 @@ from hooks import GeneratorHook, PerplexityHook, TopKAccuracyHook
 from pyreader import oov_id
 from batcher import PreBatched, QueuedSequenceBatcher
 from termcolor import print_color, gray, rgb
-from tfrnn.util import load_model
+# from tfrnn.util import load_model
+from utils import load_model
 from utils import *
 import seaborn as sns
 

@@ -35,13 +35,13 @@ def split_files(path):
     train_split = int(len(python_files) * train_proportion)
     valid_split = train_split + int(len(python_files) * valid_proportion)
     for project in python_files[:train_split]:
-        train_files.extend([f[len(path)+1:] for f in project[1]])
+        train_files.extend([f[len(path):] for f in project[1]])
 
     for project in python_files[train_split:valid_split]:
-        valid_files.extend([f[len(path)+1:] for f in project[1]])
+        valid_files.extend([f[len(path):] for f in project[1]])
 
     for project in python_files[valid_split:]:
-        test_files.extend([f[len(path)+1:] for f in project[1]])
+        test_files.extend([f[len(path):] for f in project[1]])
 
     def write_to_file(fname, lst):
         with open(os.path.join(path, fname), "w") as write_file:

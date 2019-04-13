@@ -15,10 +15,10 @@ import datetime
 
 from Trainer import Trainer
 from batcher import QueuedSequenceBatcher, PreBatched
-from tfrnn.hooks import SpeedHook, LossHook, SaveModelHook
+from hooks import SpeedHook, LossHook, SaveModelHook
 from hooks import PerplexityHook
 
-from tfrnn.util import save_model, load_model, load_variables
+from utils import save_model, load_model, load_variables
 from utils import get_file_list, copy_temp_files, create_model
 
 import sys
@@ -162,7 +162,9 @@ def preprocess(data_path, config):
         word_to_id = pickle.load(f)
 
     list_file = os.path.join(data_path, config.list_file)
+    print('Starting pyreader.get_data()')
     data = pyreader.get_data(data_path, list_file, config.seq_length, word_to_id)
+    print('Starting write_partitions()')
     write_partitions(pyreader.partition_data(data, config.num_partitions),
                      os.path.join(data_path, config.output_file))
 
